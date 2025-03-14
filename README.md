@@ -1,6 +1,8 @@
 # Mixed-Integer Optimal-Control - Algorithm & Tools
 A framework for mixed-integer optimal control problems with total variation regularization and algorithms to solve such problems numerically. Based on the paper *Vector-Valued Integer Optimal Control with TV Regularization* by Jonas Marko, Gerd Wachsmuth (2024), available on [arxiv](https://arxiv.org/abs/2411.06856).
 
+[![DOI](https://zenodo.org/badge/941955161.svg)](https://doi.org/10.5281/zenodo.15025947)
+
 # Features
 ### Modelling & Solving mixed-integer optimal control problems
 The toolbox can handle abstract mixed-integer optimal control problems, where an objective is minimized with respect to a control using its first order derivative information. The user needs to implement the objective and derivative calculation for these problems.
