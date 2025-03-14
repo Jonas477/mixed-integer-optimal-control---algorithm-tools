@@ -1,0 +1,11 @@
+data_files/* 
+!data_files/example.dat
+*.mp4
+.vscode/
+
+# Algorithm for mixed integer optimization, subject of future release
+mixed-trust.jl
+
+# examples for mixed integer optimizatipn, subject of future release
+julia_opt/example_mixed* 
+julia_opt/example_fuller.jl
