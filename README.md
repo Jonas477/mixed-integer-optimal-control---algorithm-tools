@@ -107,9 +107,8 @@ To define an optimization problem, follow these steps:
 	You may rename `ExampleObj` in the struct to a fitting designation.
 3. In your file, edit all fields and functions with `# ToDo`:
 	- `T0`, `T1`: The time interval over which the problem is solved. 
-	- `nt`: Number of equidistand grid points used in the discretization of [`T0`,`T1`]
-	- `𝓥`: Vector containing at entry $i$ all admissible integer values of the $i$-th component of the control. If there are no integer controls, use `𝓥 = []`.
-	As an example, if $u(t)\in\\{0,1\\}^2$, then `𝓥 = [[0,1],[0,1]]`
+	- `nt`: Number of equidistant grid points used in the discretization of [`T0`,`T1`]
+	- `𝓥`: Vector containing at entry $i$ all admissible integer values of the $i$-th component of the control. As an example, if $u(t)\in\\{0,1\\}^2$, then `𝓥 = [[0,1],[0,1]]`
 	- `iterator`: An iterator object containing all admissible combinations of indices in `𝓥`. If, exemplary, only $(1,0)^\top$ and $(0,1)^\top$ are admissible values for a control, the iterator may only contain the tuples `(2,1)` and `(1,2)` for `𝓥 = [[0,1],[0,1]]`. 
 	There are predefined functions in `OptBundle` to generate such an iterator: 
 		- `OptBundle.product_iterator(𝓥)`: Returns an iterator cycling through all tuples of indices of the ragged array `𝓥`.
@@ -451,7 +450,7 @@ It is also possible to refine the cells designated in a vector `marker` using `r
 In `FE.jl`, an abstract type `FE{T}` is defined, where `T` is the value of the shape functions. Only Lagrange elements of degrees 1,2 and 3 are implemented and can be defined by `FE_Lagrange(k)`, where `k` denotes the degree. Other elements such as Hermite elements may be added by designating all relevant functions. The available functions include:
 - `ndofs( ::FE, mesh )`: Number of global degrees of freedoms on `mesh`.
 - `nlocaldofs( ::FE)`: Number of local degrees of freedom (i.e. on one cell).
-- `flat_dofmap(fe::FE, mesh, idx)`: Returns the information from which the connectivity matrix can be constructed (vectors with nonzero rows and columns aswell as values of sparse connectivity matrix).
+- `flat_dofmap(fe::FE, mesh, idx)`: Returns the information from which the connectivity matrix can be constructed (vectors with nonzero rows and columns as well as values of sparse connectivity matrix).
 - `shape( fe::FE, lambda, ::Val{return_d} = Val(false), ::Val{return_H} = Val(false)) where {return_d, return_H}`: Returns as a vector the values of all local shape functions on
 the reference cell evaluated at the point specified by the barycentric
 coordinates `lambda[1,:]`, `lambda[2,:]`, `lambda[3,:]`. The latter can be row vectors so that the evaluation is done simultaneously at all points, and a matrix is returned. If `return_d`/`return_H` are true, the derivative and hessian are also returned.
